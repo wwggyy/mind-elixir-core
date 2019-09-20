@@ -14,6 +14,7 @@ import {
   selectParent,
   getAllDataString,
   getAllData,
+  getAllDataMd,
   scale,
   toCenter,
   focusNode,
@@ -22,6 +23,8 @@ import {
   initRight,
   initSide,
   setLocale,
+  enableEdit,
+  disableEdit,
 } from './interact'
 import {
   insertSibling,
@@ -76,6 +79,7 @@ let $d = document
   direction: 2,
   data: data,
   draggable: true,
+  editable: true,
   contextMenu: true,
   toolBar: true,
   nodeMenu: true,
@@ -90,6 +94,7 @@ function MindElixir({
   direction,
   locale,
   draggable,
+  editable,
   contextMenu,
   toolBar,
   nodeMenu,
@@ -109,6 +114,7 @@ function MindElixir({
   // record the direction before enter focus mode, must true in focus mode, reset to null after exit focus
   this.direction = typeof direction === 'number' ? direction : 1
   window.mevar_draggable = draggable === undefined ? true : draggable
+  this.editable = editable === undefined ? true : editable
   this.parentMap = {} // deprecate?
 
   this.currentNode = null // the selected <tpc/> element
@@ -160,6 +166,7 @@ MindElixir.prototype = {
   selectParent,
   getAllDataString,
   getAllData,
+  getAllDataMd,
   scale,
   toCenter,
   focusNode,
@@ -168,6 +175,8 @@ MindElixir.prototype = {
   initRight,
   initSide,
   setLocale,
+  enableEdit,
+  disableEdit,
 
   init: function() {
     this.container.className = 'map-container'
@@ -231,7 +240,7 @@ MindElixir.SIDE = SIDE
  * @memberof MindElixir
  * @static
  */
-MindElixir.version = '0.9.0'
+MindElixir.version = '0.9.1'
 MindElixir.E = findEle
 /**
  * @memberof MindElixir
