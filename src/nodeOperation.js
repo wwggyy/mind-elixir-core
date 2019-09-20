@@ -65,7 +65,7 @@ export let updateNodeSvgChart = function () {
   // TODO
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name insertSibling
@@ -107,7 +107,7 @@ export let insertSibling = function (el) {
   })
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name addChild
@@ -163,7 +163,7 @@ export let addChild = function (el) {
 // uncertain link disappear sometimes??
 // TODO while direction = SIDE, move up won't change the direction of primary node
 
-/** 
+/**
  * @function
  * @instance
  * @name moveUpNode
@@ -184,7 +184,7 @@ export let moveUpNode = function(el){
   nodeEle.scrollIntoViewIfNeeded()
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name moveDownNode
@@ -209,7 +209,7 @@ export let moveDownNode = function(el){
   nodeEle.scrollIntoViewIfNeeded()
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name removeNode
@@ -252,7 +252,7 @@ export let removeNode = function (el) {
   this.linkDiv()
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name moveNode
@@ -312,7 +312,7 @@ export let moveNode = function (from, to) {
   console.timeEnd('moveNode')
 }
 
-/** 
+/**
  * @function
  * @instance
  * @name beginEdit
@@ -345,4 +345,18 @@ export function processPrimaryNode(primaryNode, obj) {
       obj.direction = RIGHT
     }
   }
+}
+
+export let copyNode = function (el) {
+    let nodeEle = el || this.currentNode
+    if (!nodeEle) return
+    this.bus.fire('operation', {
+        name: 'copyNode',
+        obj: nodeEle.nodeObj
+    })
+    console.info('nodeEle.nodeObj ==')
+    console.info(nodeEle.nodeObj)
+    console.info('nodeEle ==')
+    console.info(nodeEle)
+    this.copyData = nodeEle.nodeObj
 }

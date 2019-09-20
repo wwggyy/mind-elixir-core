@@ -16,8 +16,8 @@ export default function(mind) {
     i18n[locale].removeNode,
     'delete'
   )
-  let focus = createLi('cm-fucus', i18n[locale].focus, '')
-  let unfocus = createLi('cm-unfucus', i18n[locale].cancelFocus, '')
+  // let focus = createLi('cm-fucus', i18n[locale].focus, '')
+  // let unfocus = createLi('cm-unfucus', i18n[locale].cancelFocus, '')
   let up = createLi('cm-up', i18n[locale].moveUp, 'PgUp')
   let down = createLi('cm-down', i18n[locale].moveDown, 'Pgdn')
   let link = createLi('cm-down', i18n[locale].link, '')
@@ -73,12 +73,12 @@ export default function(mind) {
   remove_child.onclick = e => {
     mind.removeNode()
   }
-  focus.onclick = e => {
-    mind.focusNode(mind.currentNode)
-  }
-  unfocus.onclick = e => {
-    mind.cancelFocus()
-  }
+  // focus.onclick = e => {
+  //   mind.focusNode(mind.currentNode)
+  // }
+  // unfocus.onclick = e => {
+  //   mind.cancelFocus()
+  // }
   up.onclick = e => {
     mind.moveUpNode()
   }

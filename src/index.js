@@ -38,6 +38,7 @@ import {
   updateNodeTags,
   updateNodeIcons,
   processPrimaryNode,
+  copyNode,
 } from './nodeOperation'
 import {
   createLink,
@@ -71,9 +72,9 @@ window.E = findEle
 export let E = findEle
 
 let $d = document
-/** 
- * @class MindElixir 
- * @example 
+/**
+ * @class MindElixir
+ * @example
  * let mind = new MindElixir({
   el: '#map',
   direction: 2,
@@ -98,11 +99,12 @@ function MindElixir({
   contextMenu,
   toolBar,
   nodeMenu,
-  keypress,
+  keypress
 }) {
   this.container = document.querySelector(el)
   this.history = [] // TODO
 
+  this.copyData = {}
   this.nodeData = data.nodeData || {}
   this.linkData = data.linkData || {}
   this.locale = locale
@@ -146,6 +148,8 @@ MindElixir.prototype = {
   updateNodeStyle,
   updateNodeTags,
   updateNodeIcons,
+
+  copyNode,
 
   createLink,
   removeLink,

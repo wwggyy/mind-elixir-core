@@ -345,7 +345,7 @@ export function insertNodeObj(obj, newObj) {
 }
 
 export function moveNodeObj(from, to) {
-  removeNodeObj(from)
+  // removeNodeObj(from)
   if (to.children) to.children.push(from)
   else to.children = [from]
 }
